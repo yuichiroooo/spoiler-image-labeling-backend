@@ -1,0 +1,4 @@
+/data/
+/db_dump/
+2_insert_users.sql
+3_insert_image_information.sql
