@@ -16,7 +16,7 @@ def get_user(db: Session, name: str, password: str) -> UserTable:
     result: Result = db.execute(
         select(UserTable).filter(UserTable.name == name, UserTable.password == password)
     )
-    return result.first()
+    return result.scalars().first()
 
 
 def update_progress(db: Session, user: user_schema.User, original: UserTable) -> UserTable:
