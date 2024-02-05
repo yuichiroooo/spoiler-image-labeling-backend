@@ -12,7 +12,14 @@ def create_user(db: Session, user: user_schema.User) -> UserTable:
     return new_user
 
 
-def get_user(db: Session, name: str, password: str) -> UserTable:
+def get_all_users(db: Session) -> list[UserTable]:
+    result: Result = db.execute(
+        select(UserTable)
+    )
+    return result.scalars().all()
+
+
+def get_me(db: Session, name: str, password: str) -> UserTable:
     result: Result = db.execute(
         select(UserTable).filter(UserTable.name == name, UserTable.password == password)
     )

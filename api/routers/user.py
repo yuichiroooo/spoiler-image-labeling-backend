@@ -11,9 +11,14 @@ def create_user(user_body: user_schema.User, db: Session = Depends(get_db)):
     return user_crud.create_user(db, user_body)
 
 
+@user.get("/all", response_model=list[user_schema.User])
+def get_all_users(db: Session = Depends(get_db)):
+    return user_crud.get_all_users(db)
+
+
 @user.get("/me", response_model=user_schema.User)
 def get_me(name: str, password: str, db: Session = Depends(get_db)):
-    return user_crud.get_user(db, name, password)
+    return user_crud.get_me(db, name, password)
 
 
 @user.put("/update/{id}", response_model=user_schema.User)
