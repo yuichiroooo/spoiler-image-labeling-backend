@@ -19,9 +19,9 @@ def get_all_users(db: Session) -> list[UserTable]:
     return result.scalars().all()
 
 
-def get_me(db: Session, name: str, password: str) -> UserTable:
+def get_me(db: Session, name: str) -> UserTable:
     result: Result = db.execute(
-        select(UserTable).filter(UserTable.name == name, UserTable.password == password)
+        select(UserTable).filter(UserTable.name == name)
     )
     return result.scalars().first()
 

@@ -17,8 +17,8 @@ def get_all_users(db: Session = Depends(get_db)):
 
 
 @user.get("/me", response_model=user_schema.User)
-def get_me(name: str, password: str, db: Session = Depends(get_db)):
-    return user_crud.get_me(db, name, password)
+def get_me(name: str, db: Session = Depends(get_db)):
+    return user_crud.get_me(db, name)
 
 
 @user.put("/update/{id}", response_model=user_schema.User)

@@ -7,7 +7,6 @@ class UserTable(Base):
     
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(Text, nullable=False)
-    password = Column(Text, nullable=False)
     progress = Column(Integer, nullable=False)
     updated_at = Column(TIMESTAMP, server_default=current_timestamp())
 
