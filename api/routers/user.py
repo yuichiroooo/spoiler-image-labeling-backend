@@ -21,9 +21,9 @@ def get_me(name: str, db: Session = Depends(get_db)):
     return user_crud.get_me(db, name)
 
 
-@user.put("/update/{id}", response_model=user_schema.User)
+@user.put("/update", response_model=user_schema.User)
 def update_progress(user_body: user_schema.User, db: Session = Depends(get_db)):
-    user = user_crud.get_user(db, user_body.name, user_body.password)
+    user = user_crud.get_me(db, user_body.name)
     
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")

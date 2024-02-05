@@ -6,6 +6,6 @@ from config.db import get_db
 
 image = APIRouter(prefix="/image")
 
-@image.get("/{id}/{progress}", response_model=list[image_schema.Image])
+@image.get("/{progress}", response_model=list[image_schema.Image])
 def get_unlabeled_images(progress: int, db: Session = Depends(get_db)):    
     return image_crud.get_images(db, progress)
