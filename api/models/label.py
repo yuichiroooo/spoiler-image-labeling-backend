@@ -7,6 +7,7 @@ class LabelTable(Base):
     
     id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     video_id = Column(Text, nullable=False)
+    channel = Column(Text, nullable=False)
     user = Column(Text, nullable=False)
     spoiler_degree = Column(Integer, nullable=False)
     created_at = Column(TIMESTAMP, server_default=current_timestamp())
