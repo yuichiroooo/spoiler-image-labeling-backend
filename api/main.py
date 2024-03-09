@@ -10,8 +10,6 @@ app = FastAPI()
 
 app.mount("/images", StaticFiles(directory="images"), name="images")
 
-origins = os.getenv("ALLOWED_HOST")
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
