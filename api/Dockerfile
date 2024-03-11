@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # dockerizeを使ってMySQLが利用可能になるまで待機し、その後uvicornでAPIサーバーを起動
-CMD sh -c "dockerize -wait tcp://mysql:3306 -timeout 60s && uvicorn main:app --reload --host 0.0.0.0 --port 8000"
+CMD sh -c "dockerize -wait tcp://mysql:3306 -timeout 60s && uvicorn main:app --host 0.0.0.0 --port 8000"
